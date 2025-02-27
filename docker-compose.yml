@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: s8lls-krs-microservice
+    ports:
+      - "8000:8000"
+    environment:
+      - SPRING_PROFILES_ACTIVE=test-environemnt
+      - DATABASE_URL=jdbc:postgresql://postgres:5432/postgres
+      - DATABASE_USER=admin
+      - DATABASE_PASSWORD=password
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
+    driver: local
