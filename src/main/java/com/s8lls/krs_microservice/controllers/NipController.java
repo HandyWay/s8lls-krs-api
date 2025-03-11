@@ -2,6 +2,7 @@ package com.s8lls.krs_microservice.controllers;
 
 import com.s8lls.krs_microservice.entity.FirmResponse;
 import com.s8lls.krs_microservice.repositories.NipRepository;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,8 +16,9 @@ public class NipController {
         this.nipRepository = nipRepository;
     }
 
-    @GetMapping("/api/{nip}")
+    @GetMapping(value = "/api/{nip}", produces = MediaType.APPLICATION_JSON_VALUE)
     public FirmResponse getFirmByNip(@PathVariable String nip) {
         return nipRepository.getFirmByNip(nip);
     }
+
 }

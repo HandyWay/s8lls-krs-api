@@ -1,12 +1,14 @@
 package com.s8lls.krs_microservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
-@JacksonXmlRootElement(localName = "result")
+@JacksonXmlRootElement(localName = "FirmResponse")
 public class FirmResponse {
 
     @JacksonXmlProperty(localName = "firm")
+    @JsonProperty("firm")
     private Firm firm;
 
     public Firm getFirm() {
@@ -17,39 +19,49 @@ public class FirmResponse {
         this.firm = firm;
     }
 
-    @JacksonXmlRootElement(localName = "firm")
     public static class Firm {
         @JacksonXmlProperty(localName = "uid")
+        @JsonProperty("uid")
         private String uid;
 
         @JacksonXmlProperty(localName = "nip")
+        @JsonProperty("nip")
         private String nip;
 
         @JacksonXmlProperty(localName = "name")
+        @JsonProperty("name")
         private String name;
 
         @JacksonXmlProperty(localName = "firstname")
+        @JsonProperty("firstname")
         private String firstname;
 
         @JacksonXmlProperty(localName = "lastname")
+        @JsonProperty("lastname")
         private String lastname;
 
         @JacksonXmlProperty(localName = "street")
+        @JsonProperty("street")
         private String street;
 
         @JacksonXmlProperty(localName = "streetNumber")
+        @JsonProperty("streetNumber")
         private String streetNumber;
 
         @JacksonXmlProperty(localName = "houseNumber")
+        @JsonProperty("houseNumber")
         private String houseNumber;
 
         @JacksonXmlProperty(localName = "city")
+        @JsonProperty("city")
         private String city;
 
         @JacksonXmlProperty(localName = "postCode")
+        @JsonProperty("postCode")
         private String postCode;
 
         @JacksonXmlProperty(localName = "postCity")
+        @JsonProperty("postCity")
         private String postCity;
 
         public String getUid() {
