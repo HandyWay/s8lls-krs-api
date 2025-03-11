@@ -28,7 +28,7 @@ public class NipRepository {
         this.restTemplate = restTemplate;
     }
 
-    public FirmResponse getFirmByNip(String nip) {
+    public ResponseEntity<FirmResponse> fetchFirmByNip(String nip) {
         String url = apiUrl + "/get/status/nip/" + nip;
 
         String auth = apiId + ":" + apiKey;
@@ -41,14 +41,6 @@ public class NipRepository {
 
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
-        try {
-            ResponseEntity<FirmResponse> response = restTemplate.exchange(
-                    url, HttpMethod.GET, entity, FirmResponse.class
-            );
-            return response.getBody();
-        } catch (Exception e) {
-            FirmResponse errorResponse = new FirmResponse();
-            return errorResponse;
-        }
+        return restTemplate.exchange(url, HttpMethod.GET, entity, FirmResponse.class);
     }
 }
